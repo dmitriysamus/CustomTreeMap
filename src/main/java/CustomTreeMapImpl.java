@@ -193,21 +193,19 @@ public class CustomTreeMapImpl <K, V> implements CustomTreeMap <K, V> {
             }
         }
 
-        // X не имеет правого потомка
         if (node.right == null) {
             swap(node, node.left);
             return;
         }
 
-        // X имеет правого потомка Y
         if (node.right != null) {
-            if (node.right.left == null) { // Y не имеет левого потомка
+            if (node.right.left == null) {
                 node.right.setLeftChild(node.left);
                 swap(node, node.right);
                 return;
             }
 
-            if (node.right.left != null) { // Y имеет левого потомка
+            if (node.right.left != null) {
                 Node<K, V> tmpLeft = node.right;
                 Node<K, V> tmpPrev = null;
                 while (tmpLeft.left != null) {
